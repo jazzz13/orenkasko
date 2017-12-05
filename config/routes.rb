@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   post 'applications' => 'application#create'
 
+  post 'upload_image' => 'application#upload_image'
 
 end
