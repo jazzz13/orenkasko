@@ -40,7 +40,7 @@ class Application < ApplicationRecord
       ],
       'navigators' => [
           'Без ограничений',
-          'Ограниченный список',
+          '1', '2', '3', '4', '5', '6'
       ],
       'period_ispolzovania' => [
           '1 год',

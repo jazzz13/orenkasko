@@ -2,11 +2,28 @@
 <head>
   <meta name="viewport" content="width=device-width">
   <meta charset="utf-8">
+  <style>
+    .main-table {
+      margin-left: 20px;
+      margin-top: 30px;
+      width: 600px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 10px;
+    }
+
+    .main-table tr {
+      height: 30px;
+    }
+
+    .main-table td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" class="main-table">
   <tr>
-    <td style="width: 200px;">ФИО</td>
+    <td style="width: 300px;">ФИО</td>
     <td><%= @data['fio'] %></td>
   </tr>
   <tr>
@@ -34,6 +51,14 @@
     <td><%= @data['item_discount'] %></td>
   </tr>
   <tr>
+    <td>Собственник?</td>
+    <td><%= @data['change_owner'] %></td>
+  </tr>
+  <tr>
+    <td>Первое страхование?</td>
+    <td><%= @data['switch_first'] %></td>
+  </tr>
+  <tr>
     <td>Стаж</td>
     <td><%= @data['item_driverAgeStage'] %></td>
   </tr>
@@ -44,6 +69,18 @@
   <tr>
     <td>Срок страхования</td>
     <td><%= @data['period_ispolzovania'] %></td>
+  </tr>
+  <tr>
+    <td>Начало страховки</td>
+    <td><%= @data['time_docs'] %></td>
+  </tr>
+  <tr>
+    <td>Диагностическая карта</td>
+    <td><%= @data['name_card'] %></td>
+  </tr>
+  <tr>
+    <td>Годна до</td>
+    <td><%= @data['time_card'] %></td>
   </tr>
 </table>
 </body>
