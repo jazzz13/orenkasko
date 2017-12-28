@@ -1,8 +1,10 @@
 class User < ApplicationRecord
 
+  TEST_ID = 5
+
   def self.test_user
 
-    User.find(5)
+    User.find(TEST_ID)
 
   end
 

@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
 
     a = Application.create!(data: data, user_id: user.id)
 
+    ApplicationMailer.new_application(a).deliver_later
+
     render json: {id: a.id}
 
   end

@@ -54,6 +54,8 @@ class Application < ApplicationRecord
       ]
   }
 
+  belongs_to :user
+
   def converted_data_to_human
 
     new_data = data
