@@ -12,9 +12,23 @@ class ApplicationController < ActionController::Base
 
     data = params[:data]
 
-    a = Application.create!(data: data)
+    user = current_user || User.test_user
+
+    a = Application.create!(data: data, user_id: user.id)
 
     render json: {id: a.id}
+
+  end
+
+  def me
+
+    render json: current_user.as_json(only: :name)
+
+  end
+
+  def current_user
+
+    User.find_by({phone: params[:phone], password: params[:password]})
 
   end
 
@@ -40,7 +54,19 @@ class ApplicationController < ActionController::Base
 
     if temp_image
 
-      render json: {temp_path: temp_image.path}
+      path = temp_image.path
+
+      ext = '.jpeg'
+
+      if ext != File.extname(path)
+
+        path = temp_image.path + ext
+
+        File.rename(temp_image.path, path)
+
+      end
+
+      render json: {temp_path: path}
 
     else
 

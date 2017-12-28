@@ -1,14 +1,15 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
-  layout 'mailer'
 
   def new_application(application)
 
     @data = application.converted_data_to_human
 
-    # attachments['image.jpg'] = File.read('./052250dc50138371fd04f19c188f0143_XL.jpg')
+    application.data['imgs'].to_a.each do |tmp_file_path|
+      tmp_file_path = tmp_file_path.strip
+      attachments[File.basename(tmp_file_path)] = File.read(tmp_file_path) if tmp_file_path.length > 0
+    end
 
-    mail(from: 'From sender', to: 'murtazin13@gmail.com', subject: @data['fio'])
+    mail(from: '<'+ENV['MAILER_LOGIN']+'>', to: ENV['MAILER_TARGET'], subject: @data['fio'])
 
   end
 

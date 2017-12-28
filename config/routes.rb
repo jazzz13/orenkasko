@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '' => 'application#home_page'
 
+  get 'me' => 'application#me'
+
   post 'applications' => 'application#create'
 
   post 'upload_image' => 'application#upload_image'
